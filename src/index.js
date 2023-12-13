@@ -198,7 +198,7 @@ function cypressSplit(on, config) {
         const specsWithDurations = specs.map((specName) => {
           const relativeSpec = path.relative(cwd, specName)
           const foundInfo = previousDurations.find(
-            (item) => item.spec === relativeSpec,
+            (item) => item.spec.includes(relativeSpec.replace(/\*/g, '')),
           )
           if (!foundInfo) {
             return {
